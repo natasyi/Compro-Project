@@ -57,9 +57,9 @@ class OurTeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OurTeam $ourTeam)
+    public function edit(OurTeam $team)
     {
-        //
+        return view ('admin.teams.edit' , compact('team'));
     }
 
     /**

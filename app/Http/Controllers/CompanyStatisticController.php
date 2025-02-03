@@ -58,9 +58,9 @@ class CompanyStatisticController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CompanyStatistic $companyStatistic)
+    public function edit(CompanyStatistic $statistic)
     {
-        //
+        return view ('admin.statistics.edit' , compact('statistic'));
     }
 
     /**

@@ -57,9 +57,9 @@ class HeroSectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HeroSection $heroSection)
+    public function edit(HeroSection $hero_section)
     {
-        //
+        return view ('admin.hero_sections.edit' , compact('heroSection'));
     }
 
     /**
