@@ -73,8 +73,12 @@ class HeroSectionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(HeroSection $heroSection)
+    public function destroy(HeroSection $hero_section)
     {
         //
+        DB::transaction(function()use ($hero_section){
+            $hero_section ->delete();
+        });
+        return redirect()->route('admin.hero_sections.index');
     }
 }
