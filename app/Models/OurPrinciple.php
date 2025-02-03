@@ -12,7 +12,7 @@ class OurPrinciple extends Model
     protected $fillable = [
         'subtitle',
         'name',
-        'thumnail',
+        'thumbnail',
         'icon',
     ];
 }

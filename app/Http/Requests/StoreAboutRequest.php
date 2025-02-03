@@ -11,7 +11,7 @@ class StoreAboutRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return true; // Sesuaikan dengan logika otorisasi yang kamu inginkan
     }
 
     /**
@@ -22,13 +22,10 @@ class StoreAboutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' =>['required','string','max: 255'],
-            'meeting_at' => ['required', 'date'],
-            'phone_number' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255'],
-            'product_id' => ['required', 'integer'],
-            'budget' =>  ['required', 'integer'],
-            'brief' => ['required', 'string', 'max:65535'],
+            'name' => ['required', 'string', 'max:255'],
+            'thumbnail' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
+            'type' => ['required', 'in:Visions,Missions'],
+            'keypoint' => ['nullable', 'array', 'max:5'], // Mengizinkan hingga 5 keypoint
         ];
     }
 }

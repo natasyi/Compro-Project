@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = [
         'tagline',
         'name',
-        'thumnail',
+        'thumbnail',
         'about',
     ];
 }

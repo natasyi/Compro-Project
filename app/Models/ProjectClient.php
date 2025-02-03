@@ -10,7 +10,7 @@ class ProjectClient extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'uccupation',
+        'occupation',
         'name',
         'avatar',
         'logo',

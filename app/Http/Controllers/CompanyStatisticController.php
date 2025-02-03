@@ -36,7 +36,7 @@ class CompanyStatisticController extends Controller
             $validated = $request->validated();
 
             if($request->hasFile('icon')){
-                $iconPath = $request->file('icon')->store('icons', 'public');
+                $iconPath = $request->file('icon')->store('icon', 'public');
                 $validated['icon'] =  $iconPath;
             }
 

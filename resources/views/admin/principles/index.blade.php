@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Manage Principles') }}
             </h2>
-            <a href=" {{route('admin.principles.create')}}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+            <a href="{{ route('admin.principles.create') }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                 Add New
             </a>
         </div>
@@ -17,20 +17,20 @@
                 @forelse($principles as $principle)
                 <div class="item-card flex flex-row justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
-                        <img src=" {{Storage::url($principle->thumbnail)}}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
+                        <img src="{{ Storage::url($principle->thumbnail) }}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
                         <div class="flex flex-col">
-                            <h3 class="text-indigo-950 text-xl font-bold">{{principle->name}}</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">{{ $principle->name }}</h3>
                         </div>
                     </div> 
-                    <div  class="hidden md:flex flex-col">
+                    <div class="hidden md:flex flex-col">
                         <p class="text-slate-500 text-sm">Date</p>
-                        <h3 class="text-indigo-950 text-xl font-bold">{{product->create_at}}</h3>
+                        <h3 class="text-indigo-950 text-xl font-bold">{{ $principle->created_at }}</h3>
                     </div>
                     <div class="hidden md:flex flex-row items-center gap-x-3">
-                        <a href="{{route('admin.principles.edit' , $principle)}} " class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                        <a href="{{ route('admin.principles.edit', $principle) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Edit
                         </a>
-                        <form action="{{route('admin.principles.destroy', $principle)}} " method="POST">
+                        <form action="{{ route('admin.principles.destroy', $principle) }}" method="POST">
                             @csrf
                             @method('DELETE') 
                             <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">

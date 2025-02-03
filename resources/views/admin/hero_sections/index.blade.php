@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Manage Hero Sections') }}
             </h2>
-            <a href=" {{route('admin.hero_sections.create')}}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+            <a href="{{ route('admin.hero_sections.create') }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                 Add New
             </a>
         </div>
@@ -14,23 +14,23 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 flex flex-col gap-y-5">
 
-                @forelse($hero_sections as $hero_section)
+                @forelse($hero_section as $hero_section)  <!-- Pastikan menggunakan variabel yang konsisten -->
                 <div class="item-card flex flex-row justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
-                        <img src=" {{Storage::url($hero_section->thumbnail)}}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
+                        <img src="{{ Storage::url($hero_section->thumbnail) }}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
                         <div class="flex flex-col">
-                            <h3 class="text-indigo-950 text-xl font-bold">{{$hero_section->heading}}<</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">{{ $hero_section->heading }}</h3>  <!-- Perbaiki tag penutup h3 -->
                         </div>
                     </div> 
-                    <div  class="hidden md:flex flex-col">
+                    <div class="hidden md:flex flex-col">
                         <p class="text-slate-500 text-sm">Date</p>
-                        <h3 class="text-indigo-950 text-xl font-bold">{{$hero_section->create_at}}</h3>
+                        <h3 class="text-indigo-950 text-xl font-bold">{{ $hero_section->created_at }}</h3>  <!-- Perbaiki field created_at -->
                     </div>
                     <div class="hidden md:flex flex-row items-center gap-x-3">
-                        <a href=" {{route('admin.hero_sections.edit' , $hero_section)}}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                        <a href="{{ route('admin.hero_sections.edit', $hero_section) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Edit
                         </a>
-                        <form action=" {{route('admin.hero_sections.destroy' , $hero_section)}}" method="POST"> 
+                        <form action="{{ route('admin.hero_sections.destroy', $hero_section) }}" method="POST"> 
                             @csrf
                             @method('DELETE') 
                             <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
@@ -40,7 +40,7 @@
                     </div>
                 </div> 
                 @empty
-                <p>Belum ada data terbaru</p>
+                    <p>Belum ada data terbaru</p>
                 @endforelse
             </div>
         </div>

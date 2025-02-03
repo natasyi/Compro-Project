@@ -8,13 +8,14 @@
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden p-10 shadow-sm sm:rounded-lg"> 
-                @if ($errors ->any())
-                    @foreach ($errors->all() as $error )
-                    <div> class="py-3 w-full rounded-3xl bg-red-500 text-white">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="py-3 w-full rounded-3xl bg-red-500 text-white">
                         {{$error}}
                     </div>
-                    @endforeach                
-                @endif
+                @endforeach
+            @endif
+
 
                 <form method="POST" action="{{route('admin.principles.store')}} " enctype="multipart/form-data"> 
                     @csrf

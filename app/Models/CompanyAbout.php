@@ -10,13 +10,13 @@ class CompanyAbout extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'thumnail',
+        'thumbnail',  // Perbaiki 'thumnail' menjadi 'thumbnail'
         'name',
         'type',
     ];
 
 
-    public function keypoint(){
+    public function keypoints(){
         return $this->hasMany(CompanyKeypoint::class);
     }
 }

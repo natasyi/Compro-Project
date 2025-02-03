@@ -22,10 +22,10 @@ class StoreTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'name' =>['required','string','max: 255'],
-        'occupation' => ['required', 'string', 'max:255'],
-        'location' => ['required', 'image', 'mimes:png, jpg, jpeg'],
-        'avatar' => ['required', 'image', 'mimes:png,jpg,jpeg'],  
-        ];
+            'name' => ['required', 'string', 'max:255'],
+            'occupation' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'], // ✅ Perbaikan di sini
+            'avatar' => ['required', 'image', 'mimes:png,jpg,jpeg'],
+        ];        
     }
 }

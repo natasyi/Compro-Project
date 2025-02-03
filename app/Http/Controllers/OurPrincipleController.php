@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePrincipleRequest;
 use App\Models\OurPrinciple;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OurPrincipleController extends Controller
 {
@@ -30,7 +31,24 @@ class OurPrincipleController extends Controller
      */
     public function store(StorePrincipleRequest $request)
     {
-        //
+        DB::transaction(function() use ($request){
+            $validated = $request->validated();
+
+            if($request->hasFile('icon')){
+                $iconPath = $request->file('icon')->store('icon', 'public');
+                $validated['icon'] =  $iconPath;
+            }
+
+            if($request->hasFile('thumbnail')){
+                $thumbnailPath = $request->file('thumbnail')->store('thumbnail', 'public');
+                $validated['thumbnail'] =  $thumbnailPath;
+            }
+
+            $newOurPrinciple = OurPrinciple::create($validated);
+
+        });
+
+        return redirect()->route('admin.principles.index');
     }
 
     /**
