@@ -59,7 +59,7 @@ class HeroSectionController extends Controller
      */
     public function edit(HeroSection $hero_section)
     {
-        return view ('admin.hero_sections.edit' , compact('heroSection'));
+        return view ('admin.hero_sections.edit' , compact('hero_section'));
     }
 
     /**
