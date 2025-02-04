@@ -10,7 +10,8 @@
             <div class="bg-white overflow-hidden p-10 shadow-sm sm:rounded-lg">
                 
                 <form method="POST" action="{{ route('admin.testimonials.update', $testimonial) }}" enctype="multipart/form-data">
-
+                    @csrf
+                    @method('PUT')
 
                     <div class="mt-4">
                         <x-input-label for="project_client" :value="__('project_client')" />
