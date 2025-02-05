@@ -6,6 +6,8 @@ use App\Http\Requests\StoreStatisticRequest;
 use App\Models\CompanyStatistic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UpdateStatisticRequest;
+
 
 class CompanyStatisticController extends Controller
 {
@@ -66,9 +68,21 @@ class CompanyStatisticController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CompanyStatistic $companyStatistic)
+    public function update(UpdateStatisticRequest $request, CompanyStatistic $statistic)
     {
-        //
+        DB::transaction(function() use ($request, $statistic){
+            $validated = $request->validated();
+
+            if($request->hasFile('icon')){
+                $iconPath = $request->file('icon')->store('icon', 'public');
+                $validated['icon'] =  $iconPath;
+            }
+
+            $statistic->update($validated);
+
+        });
+
+        return redirect()->route('admin.statistics.index');
     }
 
     /**

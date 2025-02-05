@@ -6,26 +6,18 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePrincipleRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-        'path_video' => ['required', 'string', 'max:255'],
-        'subtitle' => ['required', 'string', 'max:255'],
-        'tumbnail' => ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
-        'icon' => ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
+            'name' => 'required|string|max:255',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'subtitle' => 'nullable|string|max:1000',
         ];
+    }
+
+    public function authorize()
+    {
+        return true;
     }
 }
